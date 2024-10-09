@@ -44,10 +44,31 @@ describe('PUT /products/:id', () => {
     const newProduct = {
         id: 1, name: 'SmartTV', price: 30000, stock: 10
     }
+    const newProduct2 = {
+        id: 1, price: 30000, stock: 10
+    }
+    const newProduct3 = {
+        id: 1, stock: 10
+    }
+    const newProduct4 = {
+        id: 1, price: 30000
+    }
     it('should update an existing product', async () => {
         const res = await request(app).put('/products/1').send(newProduct);
         expect(res.status).toBe(200);
         expect(res.body).toEqual(newProduct);
+
+        const res2 = await request(app).put('/products/1').send(newProduct2);
+        expect(res2.status).toBe(200);
+        expect(res2.body).toEqual(newProduct);
+
+        const res3 = await request(app).put('/products/1').send(newProduct3);
+        expect(res3.status).toBe(200);
+        expect(res3.body).toEqual(newProduct);
+
+        const res4 = await request(app).put('/products/1').send(newProduct4);
+        expect(res4.status).toBe(200);
+        expect(res4.body).toEqual(newProduct);
     });
     it('should return 404 if product not found', async () => {
         const res = await request(app).put('/products/999').send(newProduct);
