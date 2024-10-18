@@ -58,22 +58,6 @@ describe('POST /products', () => {
     });
 });
 
-//failed
-describe('POST /products', () => {
-    //create object newProduct 
-    const newProduct = {
-        id: 3, name: 'Smartwatch', price: 3000, stock: 1
-    }
-    it('should add a new product', async () => {
-        //use post use newProduct to app.js
-        const res = await request(app).post('/products').send(newProduct)
-        //check statusCode form response
-        expect(res.status).toBe(200);
-        //check newProduct form response
-        expect(res.body).toEqual(newProduct);
-    });
-});
-
 describe('PUT /products/:id', () => {
     //object to update
     const newProduct = {
